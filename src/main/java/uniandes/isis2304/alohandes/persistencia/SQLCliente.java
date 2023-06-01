@@ -62,6 +62,22 @@ public class SQLCliente {
 		q.setParameters(nombre);
 		return (Cliente) q.executeUnique();
 	}
+	public List<Cliente> clientesReservasCostosas (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT DISTINCT CLIENTE.* FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID INNER JOIN CLIENTE ON RESERVA.CLIENTE=CLIENTE.ID WHERE COSTOBASE>5000");
+		q.setResultClass(Cliente.class);
+		return (List<Cliente>) q.executeList();
+	}
+	public List<Cliente> clientesReservasUnaPorMes (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT CLIENTE, COUNT (CLIENTE) AS CANT FROM (SELECT CLIENTE, EXTRACT(MONTH FROM FECHAINICIO) AS MES FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID GROUP BY CLIENTE, EXTRACT(MONTH FROM FECHAINICIO)) GROUP BY CLIENTE HAVING COUNT (CLIENTE)=12");
+		q.setResultClass(Cliente.class);
+		return (List<Cliente>) q.executeList();
+	}
 
 	public List<Cliente> consultaConsumov1 (PersistenceManager pm, long inmueble, Timestamp fechaI, Timestamp fechaF)
 	{

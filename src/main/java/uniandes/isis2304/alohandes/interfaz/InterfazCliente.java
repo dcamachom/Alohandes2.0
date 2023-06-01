@@ -307,60 +307,6 @@ public class InterfazCliente extends JFrame implements ActionListener{
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	 }
-
-	 public void consultarConsumov1()
-	 {
-		try{
-			String idInmueble= JOptionPane.showInputDialog(this,"Inmueble a consultar");
-			String fechaInic= JOptionPane.showInputDialog(this, "Fecha de inicio, yyyy-mm-dd");
-			String fechaFin= JOptionPane.showInputDialog(this, "Fecha de fin, yyyy-mm-dd");
-			String opcion= JOptionPane.showInputDialog(this, "0:Si no desea clasificacion ,1: Si desea ordenar por nombre, 2: Si desea ordenar por id, 3: Si desea agrupar");
-			if (idInmueble!=null && fechaInic!=null && fechaFin!=null && opcion!=null){
-				List<Cliente> resp= alohAndes.consultaConsumoV1(Long.parseLong(idInmueble), Timestamp.valueOf(fechaInic+=" 00:00:00.00"), Timestamp.valueOf(fechaFin+=" 00:00:00.00"), Integer.parseInt(opcion));
-				String resultado = "En cancelarConsumoAlohandes \n\n";
-				for (int i=0; i<resp.size();i++){
-					resultado+="Id: "+ String.valueOf(resp.get(i).getId());
-					resultado+="Nombre: " +resp.get(i).getNombre()+" ";
-					resultado+="Correo: " +resp.get(i).getCorreo()+" ";
-					resultado+="Telefono: " +resp.get(i).getTelefono()+" ";
-					resultado+="Tipo Miembro: " +resp.get(i).getTipoMiembro();
-					resultado+="\n\n";
-				}
-				panelDatos.actualizarInterfaz(resultado);
-			}
-		}
-		catch(Exception e) {
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	 }
-
-	 public void consultarConsumov2()
-	 {
-		try{
-			String idInmueble= JOptionPane.showInputDialog(this,"Inmueble a consultar");
-			String fechaInic= JOptionPane.showInputDialog(this, "Fecha de inicio, yyyy-mm-dd");
-			String fechaFin= JOptionPane.showInputDialog(this, "Fecha de fin, yyyy-mm-dd");
-			String opcion= JOptionPane.showInputDialog(this, "0:Si no desea clasificacion ,1: Si desea ordenar por nombre, 2: Si desea ordenar por id, 3: Si desea agrupar");
-			if (idInmueble!=null && fechaInic!=null && fechaFin!=null && opcion!=null){
-				List<Cliente> resp= alohAndes.consultaConsumoV2(Long.parseLong(idInmueble), Timestamp.valueOf(fechaInic+=" 00:00:00.00"), Timestamp.valueOf(fechaFin+=" 00:00:00.00"), Integer.parseInt(opcion));
-				String resultado = "En cancelarConsumoAlohandes \n\n";
-				for (int i=0; i<resp.size();i++){
-					resultado+="Id: "+ String.valueOf(resp.get(i).getId());
-					resultado+="Nombre: " +resp.get(i).getNombre()+" ";
-					resultado+="Correo: " +resp.get(i).getCorreo()+" ";
-					resultado+="Telefono: " +resp.get(i).getTelefono()+" ";
-					resultado+="TipoMiembro: " +resp.get(i).getTipoMiembro();
-					resultado+="\n\n";
-				}
-				panelDatos.actualizarInterfaz(resultado);
-			}
-		}
-		catch(Exception e) {
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	 }
 	
 	 /*
 	  * Main

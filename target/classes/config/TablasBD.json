@@ -1,0 +1,23 @@
+{
+	"title": "Nombres de las tablas de AlohAndes Uniandes para la aplicación ",
+	"unidadPersistencia": "AlohAndes",
+	"tablas":
+	[
+		"AlohAndes_sequence",
+		"APARTAMENTO",
+		"CASA",
+		"CLIENTE",
+		"HABITACION",
+		"HOSTAL",
+		"HOTEL",
+		"INMUEBLE",
+		"OPERADOR",
+		"PERSONANATURAL",
+		"RESERVACOLECTIVA",
+		"RESERVA",
+		"SERVICIO",
+		"SERVICIOINMUEBLE",
+		"SERVICIOUSADO",
+		"VIVIENDAUNIVERSITARIA"
+	]
+}

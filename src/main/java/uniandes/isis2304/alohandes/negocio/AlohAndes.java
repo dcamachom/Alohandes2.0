@@ -573,4 +573,64 @@ public class AlohAndes {
 		List<Cliente> resp= pa.consultaConsumoV2(inmueble, fechaInic, fechaFin, opcion);
 		return resp;
 	}
+	public List<VOInmueble> consultarFuncionamientoInmuebles1 (int semana)
+	{
+		log.info ("Consultar funcionamiento inmuebles");
+		List<VOInmueble> voInmuebles = new LinkedList<VOInmueble> ();
+        for (Inmueble tb : pa.consultarFuncionamientoInmuebles1(semana))
+        {
+        	voInmuebles.add (tb);
+        }
+        return voInmuebles;
+	}
+	public List<VOInmueble> consultarFuncionamientoInmuebles2 (int semana)
+	{
+		log.info ("Consultar funcionamiento inmuebles");
+		List<VOInmueble> voInmuebles = new LinkedList<VOInmueble> ();
+        for (Inmueble tb : pa.consultarFuncionamientoInmuebles2(semana))
+        {
+        	voInmuebles.add (tb);
+        }
+        return voInmuebles;
+	}
+	public List<VOOperador> consultarFuncionamientoOperadores1 (int semana)
+	{
+		log.info ("Consultar funcionamiento operadores");
+		List<VOOperador> voOperadores = new LinkedList<VOOperador> ();
+        for (Operador tb : pa.consultarFuncionamientoOperadores1(semana))
+        {
+        	voOperadores.add (tb);
+        }
+        return voOperadores;
+	}
+	public List<VOOperador> consultarFuncionamientoOperadores2 (int semana)
+	{
+		log.info ("Consultar funcionamiento operadores");
+		List<VOOperador> voOperadores = new LinkedList<VOOperador> ();
+        for (Operador tb : pa.consultarFuncionamientoOperadores2(semana))
+        {
+        	voOperadores.add (tb);
+        }
+        return voOperadores;
+	}
+	public List<VOCliente> clientesReservasCostosas ()
+	{
+		log.info ("Consultar buenos clientes");
+		List<VOCliente> voClientes = new LinkedList<VOCliente> ();
+        for (Cliente tb : pa.clientesReservasCostosas())
+        {
+        	voClientes.add (tb);
+        }
+        return voClientes;
+	}
+	public List<VOCliente> clientesReservasUnaPorMes ()
+	{
+		log.info ("Consultar buenos clientes");
+		List<VOCliente> voClientes = new LinkedList<VOCliente> ();
+        for (Cliente tb : pa.clientesReservasUnaPorMes())
+        {
+        	voClientes.add (tb);
+        }
+        return voClientes;
+	}
 }

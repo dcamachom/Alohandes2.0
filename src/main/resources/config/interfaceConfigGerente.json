@@ -1,0 +1,31 @@
+{
+	"title": "Menu para el gerente",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle":"Requerimientos",
+		  "options":
+		  	[
+                {
+					"label": "Consultar consumo en Alohandes",
+					"event": "consultarConsumov1"
+				},
+				{
+					"label": "Consultar consumo en Alohandes v2",
+					"event": "consultarConsumov2"	
+				},
+		  		{
+		  			"label":"Consultar Funcionamiento",
+		  			"event":"consultarFuncionamiento"
+		  		},
+				{
+					"label":"Consultar Buenos Clientes",
+					"event":"buenosClientes"
+                }
+
+			]
+        }
+    ]
+}

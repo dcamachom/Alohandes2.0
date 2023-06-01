@@ -93,5 +93,28 @@ public class SQLInmueble {
 		q.setParameters(id);
 		return (String) q.executeUnique();
 	}
-	
+	public List<Inmueble> consultarFuncionamientoInmuebles1 (PersistenceManager pm, int semana)
+	{
+		String sql= "SELECT INMUEBLE.* FROM "
+		+pa.darTablaInmueble()+" INNER JOIN (SELECT * FROM (SELECT "
+		+pa.darTablaInmueble()+", COUNT(*) AS CANT FROM "
+		+pa.darTablaReserva()+" WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY INMUEBLE) WHERE CANT=(SELECT MIN(COUNT(*)) AS CANT FROM "
+		+pa.darTablaReserva()+" WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY INMUEBLE))B ON INMUEBLE.ID=B.INMUEBLE";
+		Query q = pm.newQuery(SQL, sql);
+		q.setResultClass(Inmueble.class);
+		q.setParameters(semana, semana, semana, semana);
+		return q.executeList();
+	}
+	public List<Inmueble> consultarFuncionamientoInmuebles2 (PersistenceManager pm, int semana)
+	{
+		String sql= "SELECT INMUEBLE.* FROM "
+		+pa.darTablaInmueble()+" INNER JOIN (SELECT * FROM (SELECT "
+		+pa.darTablaInmueble()+", COUNT(*) AS CANT FROM "
+		+pa.darTablaReserva()+" WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY INMUEBLE) WHERE CANT=(SELECT MAX(COUNT(*)) AS CANT FROM "
+		+pa.darTablaReserva()+" WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY INMUEBLE))B ON INMUEBLE.ID=B.INMUEBLE";
+		Query q = pm.newQuery(SQL, sql);
+		q.setResultClass(Inmueble.class);
+		q.setParameters(semana, semana, semana, semana);
+		return q.executeList();
+	}
 }

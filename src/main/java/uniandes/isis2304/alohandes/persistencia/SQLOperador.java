@@ -54,5 +54,31 @@ public class SQLOperador {
 		q.setResultClass(Operador.class);
 		return (List<Operador>) q.executeList();
 	}
+	public List<Operador> consultarFuncionamientoOperadores1 (PersistenceManager pm, int semana)
+	{
+		String sql= "SELECT OPERADOR.* FROM "
+		+pa.darTablaOperador()+" INNER JOIN (SELECT * FROM (SELECT OPERADOR, COUNT(*) AS CANT FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY OPERADOR) WHERE CANT=(SELECT MIN(COUNT(*)) AS CANT FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY OPERADOR))B ON OPERADOR.ID=B.OPERADOR";
+		Query q = pm.newQuery(SQL, sql);
+		q.setResultClass(Operador.class);
+		q.setParameters(semana, semana, semana, semana);
+		return q.executeList();
+	}
+	public List<Operador> consultarFuncionamientoOperadores2 (PersistenceManager pm, int semana)
+	{
+		String sql= "SELECT OPERADOR.* FROM "
+		+pa.darTablaOperador()+" INNER JOIN (SELECT * FROM (SELECT OPERADOR, COUNT(*) AS CANT FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY OPERADOR) WHERE CANT=(SELECT MAX(COUNT(*)) AS CANT FROM "
+		+pa.darTablaReserva()+" INNER JOIN "
+		+pa.darTablaInmueble()+" ON RESERVA.INMUEBLE=INMUEBLE.ID WHERE TO_CHAR(FECHAINICIO, 'WW')=? OR TO_CHAR(FECHAFIN, 'WW')=? GROUP BY OPERADOR))B ON OPERADOR.ID=B.OPERADOR";
+		Query q = pm.newQuery(SQL, sql);
+		q.setResultClass(Operador.class);
+		q.setParameters(semana, semana, semana, semana);
+		return q.executeList();
+	}
 
 }

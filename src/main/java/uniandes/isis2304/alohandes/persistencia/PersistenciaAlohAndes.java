@@ -514,7 +514,30 @@ public class PersistenciaAlohAndes {
             return sqlCliente.consultaConsumov2_2(pm, inmueble, fechaI, fechaF);
          }
      }
-	
+    public List<Inmueble> consultarFuncionamientoInmuebles1 (int semana)
+    {
+        return sqlInmueble.consultarFuncionamientoInmuebles1 (pmf.getPersistenceManager(), semana);
+    }
+    public List<Inmueble> consultarFuncionamientoInmuebles2 (int semana)
+    {
+        return sqlInmueble.consultarFuncionamientoInmuebles2 (pmf.getPersistenceManager(), semana);
+    }
+    public List<Operador> consultarFuncionamientoOperadores1 (int semana)
+    {
+        return sqlOperador.consultarFuncionamientoOperadores1 (pmf.getPersistenceManager(), semana);
+    }
+    public List<Operador> consultarFuncionamientoOperadores2 (int semana)
+    {
+        return sqlOperador.consultarFuncionamientoOperadores2 (pmf.getPersistenceManager(), semana);
+    }
+    public List<Cliente> clientesReservasCostosas ()
+    {
+        return sqlCliente.clientesReservasCostosas (pmf.getPersistenceManager());
+    }
+    public List<Cliente> clientesReservasUnaPorMes ()
+    {
+        return sqlCliente.clientesReservasUnaPorMes (pmf.getPersistenceManager());
+    }
 	public List<Cliente> darClientes ()
 	{
 		return sqlCliente.darClientes (pmf.getPersistenceManager());

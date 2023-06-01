@@ -27,16 +27,20 @@ public class InterfazInic extends JFrame implements ActionListener{
 	
 	private JButton btnCliente;
 	private JButton btnOperador;
+	private JButton btnGerente;
 	
 	public InterfazInic(){
 		configurarFrame ( );
 		JPanel panel= new JPanel(); 
 		this.btnCliente=new JButton ("Cliente");
 		this.btnOperador=new JButton ("Operador");
+		this.btnGerente=new JButton ("Gerente general");
 		panel.add(btnCliente);
 		btnCliente.addActionListener(this);
 		panel.add(btnOperador);
 		btnOperador.addActionListener(this);
+		panel.add(btnGerente);
+		btnGerente.addActionListener(this);
 		this.add(panel);
 	}
 	private void configurarFrame(  )
@@ -79,6 +83,10 @@ public class InterfazInic extends JFrame implements ActionListener{
 		else if (e.getSource()==btnOperador) {
 			InterfazOperador interfazO= new InterfazOperador();
 			interfazO.setVisible(true);
+		}
+		else if (e.getSource()==btnGerente) {
+			InterfazGerente interfazG= new InterfazGerente();
+			interfazG.setVisible(true);
 		}
 	}
 

@@ -47,20 +47,6 @@
 					"event": "cancelarReservaColectiva"
 				}
 		  	]
-		},
-		{"menuTitle": "Requerimientos de Consulta",
-		 "options":
-			[
-				{
-					"label": "Consultar consumo en Alohandes",
-					"event": "consultarConsumov1"
-				},
-				{
-					"label": "Consultar consumo en Alohandes v2",
-					"event": "consultarConsumov2"	
-				}
-
-			]
 		}
 	]
 }
