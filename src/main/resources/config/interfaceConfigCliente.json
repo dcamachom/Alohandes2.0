@@ -1,0 +1,66 @@
+{
+	"title": "Menu para el cliente",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle":"Cliente",
+		  "options":
+		  	[
+		  		{
+		  			"label":"Registro Cliente",
+		  			"event":"registroCliente"
+		  		},
+				{
+					"label":"Listar Inmuebles",
+					"event":"listarInmuebles"
+				},
+				{
+					"label":"Listar Clientes",
+					"event":"listarClientes"
+				}
+		  	]
+		},
+		{ "menuTitle":"Reserva Individual",
+		  "options":
+		  	[
+				{
+					"label":"Realizar reserva",
+					"event": "registroReserva"
+				},
+				{
+					"label":"Cancelar reserva",
+					"event": "cancelarReserva"
+				}
+		  	]
+		},
+		{ "menuTitle":"Reserva Colectiva",
+		  "options":
+		  	[
+				{
+					"label":"Realizar reserva",
+					"event": "registroReservaColectiva"
+				},
+				{
+					"label":"Cancelar reserva",
+					"event": "cancelarReservaColectiva"
+				}
+		  	]
+		},
+		{"menuTitle": "Requerimientos de Consulta",
+		 "options":
+			[
+				{
+					"label": "Consultar consumo en Alohandes",
+					"event": "consultarConsumov1"
+				},
+				{
+					"label": "Consultar consumo en Alohandes v2",
+					"event": "consultarConsumov2"	
+				}
+
+			]
+		}
+	]
+}
